@@ -1,9 +1,9 @@
-type JobClass =  "Paladin" |  "Dark Knight" |  "Warrior" |  "Gunbreaker";
+type JobClass = "Paladin" | "Dark Knight" | "Warrior" | "Gunbreaker";
 
 // Player Info
 class PlayerInfo {
     name: string;
-    constructor(name: string){
+    constructor(name: string) {
         this.name = name;
     }
 }
@@ -18,7 +18,7 @@ interface Player {
 class MyPlayer implements Player {
     playerInfo: PlayerInfo;
     currentClass: JobClass;
-    currentClassInstance: TankClass; 
+    currentClassInstance: TankClass;
 
     constructor(playerInfo: PlayerInfo, currentClass: JobClass = "Paladin") {
         this.playerInfo = playerInfo;
@@ -51,7 +51,7 @@ class TankClass implements Tank {
     color: string;
     aggroLevel: number;
 
-    constructor(playerInfo:PlayerInfo, tankStance=false, color="blue", aggroLevel=0) {
+    constructor(playerInfo: PlayerInfo, tankStance = false, color = "blue", aggroLevel = 0) {
         this.playerInfo = playerInfo;
         this.tankStance = tankStance;
         this.color = color;
@@ -70,39 +70,47 @@ class TankClass implements Tank {
 
 class Paladin extends TankClass {
     fastBlade(target: string): string {
+        if (!target) throw new Error("Target must be provided!");
         return `${this.playerInfo.name} uses Fast Blade on ${target}!`;
     }
     riotBlade(target: string): string {
+        if (!target) throw new Error("Target must be provided!");
         return `${this.playerInfo.name} uses Riot Blade on ${target}!`;
     }
 }
 
 class DarkKnight extends TankClass {
     hardSlash(target: string): string {
+        if (!target) throw new Error("Target must be provided!");
         return `${this.playerInfo.name} uses Hard Slash on ${target}!`;
     }
 
     powerSlash(target: string): string {
+        if (!target) throw new Error("Target must be provided!");
         return `${this.playerInfo.name} uses Power Slash on ${target}!`;
     }
 }
 
 class Warrior extends TankClass {
     heavySwing(target: string): string {
+        if (!target) throw new Error("Target must be provided!");
         return `${this.playerInfo.name} uses Heavy Swing on ${target}!`;
     }
 
     skullSunder(target: string): string {
+        if (!target) throw new Error("Target must be provided!");
         return `${this.playerInfo.name} uses Skull Sunder on ${target}!`;
     }
 }
 
 class Gunbreaker extends TankClass {
     keenEdge(target: string): string {
+        if (!target) throw new Error("Target must be provided!");
         return `${this.playerInfo.name} uses Keen Edge on ${target}!`;
     }
 
     brutalShell(target: string): string {
+        if (!target) throw new Error("Target must be provided!");
         return `${this.playerInfo.name} uses Brutal Shell on ${target}!`;
     }
 }
