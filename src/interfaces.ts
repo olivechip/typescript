@@ -125,7 +125,17 @@ const jobClassMap: Record<JobClass, new (playerInfo: PlayerInfo) => TankClass> =
 // Tests
 const newPlayer = new PlayerInfo("Astrid Leanna");
 const me = new MyPlayer(newPlayer);
+
+// Should be Paladin
 console.log(me.currentClass);
 
 me.changeClass("Warrior");
+// Should be Warrior
 console.log(me.currentClass);
+
+//Should be 0
+console.log(me.currentClassInstance.aggroLevel);
+
+// Should be 10
+console.log(me.currentClassInstance.provoke());
+console.log(me.currentClassInstance.aggroLevel);
